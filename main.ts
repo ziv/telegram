@@ -1,15 +1,15 @@
 import "@std/dotenv/load";
-import TelegramBot from 'npm:node-telegram-bot-api';
+import TelegramBot from "npm:node-telegram-bot-api";
 
-const token = Deno.env.get('TG_TOKEN');
-const bot = new TelegramBot(token, {polling: true});
+const token = Deno.env.get("TG_TOKEN");
+const bot = new TelegramBot(token, { polling: true, port: 8000 });
 
-bot.on('message', (msg: any) => {
-    const chatId = msg.chat.id;
+bot.on("message", (msg: any) => {
+  const chatId = msg.chat.id;
 
-    // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, 'Received your message');
-    console.log(msg);
+  // send a message to the chat acknowledging receipt of their message
+  bot.sendMessage(chatId, "Received your message");
+  console.log(msg);
 });
 
 
